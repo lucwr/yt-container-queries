@@ -1,36 +1,43 @@
 <script setup>
-import WeatherWidget from './components/WeatherWidget.vue'
+import { ref } from 'vue'
+import ShoppingCart from './components/ShoppingCart.vue'
+
+let isOpen = ref(false)
+
+function toggleShoppingCart() {
+  isOpen.value = !isOpen.value
+}
 </script>
 
 <template>
-  <div class="container px-8 mx-auto">
-    <div class="grid grid-cols-1 gap-8 sm:grid-cols-3">
-      <div class="sm:col-span-2">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, repellat
-        assumenda ab ipsa ducimus recusandae in dolorum obcaecati maxime
-        cupiditate provident sequi neque ipsum laboriosam earum. Itaque
-        asperiores facilis inventore delectus. Beatae explicabo repellat
-        voluptatem culpa, sequi laborum vitae consequatur ea id cumque commodi
-        atque est fugiat quae? Rerum ad doloribus error perferendis architecto
-        neque dolor incidunt suscipit facere maiores dolore labore, officiis
-        rem. Enim ullam, qui eaque placeat in labore, repellat, omnis
-        exercitationem impedit vitae eveniet et vero nostrum consectetur
-        obcaecati odio. Laborum voluptatem architecto molestias, adipisci animi
-        ea, placeat tenetur dolorum soluta, praesentium aut maiores nobis dolore
-        totam.
-
-        <WeatherWidget />
-      </div>
-      <div>
-        sidebar. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-        atque deserunt aliquid blanditiis magni odit dicta. Libero aliquam
-        recusandae enim, in quas numquam esse possimus earum nihil amet
-        voluptates voluptatum sit magnam, repellat eveniet laudantium excepturi.
-        Labore explicabo a accusamus! Mollitia amet possimus error fugiat
-        molestiae molestias ipsam. Doloremque perferendis aperiam molestiae iure
-        qui autem possimus obcaecati ab odio deleniti amet, dignissimos vero rem
-        voluptate. Possimus veniam voluptates aut.
-      </div>
-    </div>
+  <header class="bg-blue-800 text-white px-5 py-6">
+    <nav class="flex justify-between">
+      <ul class="flex relative gap-4">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="flex relative gap-4">
+        <li>
+          <a href="#" @click.prevent="toggleShoppingCart">Cart</a>
+          <div
+            class="@container absolute right-0 bg-white border border-gray-300 rounded-md w-80 text-gray-800 z-10"
+            v-show="isOpen"
+          >
+            <ShoppingCart />
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <div class="@container container mx-auto mt-5 px-8">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo molestias
+    minima impedit vel fuga minus natus quod architecto magni voluptates atque
+    consequuntur ea eum, provident, quidem facilis, porro excepturi veritatis
+    quibusdam. Inventore harum impedit magni minus quia laudantium obcaecati
+    necessitatibus molestiae dolores fugiat sapiente eveniet, culpa a,
+    aspernatur saepe non quisquam enim temporibus! Omnis dolorem, nobis
+    distinctio consequuntur rem corporis.
+    <ShoppingCart />
   </div>
 </template>
